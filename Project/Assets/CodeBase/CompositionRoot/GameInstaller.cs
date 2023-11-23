@@ -17,7 +17,6 @@ namespace CodeBase.CompositionRoot
     {
         public override void InstallBindings()
         {
-
             BindGameBootstraperFactory();
 
             BindCoroutineRunner();
@@ -80,20 +79,14 @@ namespace CodeBase.CompositionRoot
 
         private void BindGameFactory()
         {
-            Container
-                .Bind<IGameFactory>()
-                .FromSubContainerResolve()
-                .ByInstaller<GameFactoryInstaller>()
-                .AsSingle();
+            Container.Bind<IGameFactory>().To<GameFactory>().AsSingle();
         }
 
         private void BindUIFactory()
         {
             Container
                 .Bind<IUIFactory>()
-                .FromSubContainerResolve()
-                .ByInstaller<UIFactoryInstaller>()
-                .AsSingle();
+                .To<UIFactory>().AsSingle();
         }
 
         private void BindCoroutineRunner()
