@@ -7,25 +7,25 @@ namespace CodeBase.Logic.Weapon
 {
     public abstract class Weapon : MonoBehaviour, IWeapon
     {
-        protected IStaticDataService StaticDataService;
-
-        protected WeaponEnum weaponType;
+        protected WeaponEnum WeaponType;
+        private IStaticDataService staticDataService;
 
         [Inject]
         void Construct(IStaticDataService staticDataService)
         {
-            StaticDataService = staticDataService;
+            this.staticDataService = staticDataService;
         }
 
         private void Start()
         {
             gameObject.GetComponent<MeshRenderer>().material
-                .SetColor("_Color", StaticDataService.GetWeaponData(weaponType).Color);
+                .SetColor("_Color", staticDataService.GetWeaponData(WeaponType).Color);
         }
 
-        public void Shoot()
+        public void Shoot(Bullet bullet, Vector3 direction)
         {
-            print($"shoot with {StaticDataService.GetWeaponData(weaponType).Damage}");
+            bullet.InitBullet(staticDataService.GetWeaponData(WeaponType).Damage, direction,
+                transform.position + transform.forward * 1.5f);
         }
     }
 }

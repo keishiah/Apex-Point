@@ -4,7 +4,7 @@
     {
         public WeaponTwo()
         {
-            weaponType = WeaponEnum.WeaponTwo;
+            WeaponType = WeaponEnum.WeaponTwo;
         }
     }
 }

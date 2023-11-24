@@ -7,7 +7,7 @@ namespace CodeBase.Logic.Weapon.WeaponTypes
 
         public WeaponOne()
         {
-            weaponType = WeaponEnum.WeaponOne;
+            WeaponType = WeaponEnum.WeaponOne;
         }
     }
 }

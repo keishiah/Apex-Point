@@ -1,7 +1,9 @@
-﻿namespace CodeBase.Logic.Weapon
+﻿using UnityEngine;
+
+namespace CodeBase.Logic.Weapon
 {
     public interface IWeapon
     {
-        void Shoot();
+        void Shoot(Bullet bullet, Vector3 direction);
     }
 }
