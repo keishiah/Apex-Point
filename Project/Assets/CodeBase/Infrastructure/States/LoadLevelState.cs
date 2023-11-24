@@ -7,15 +7,13 @@ namespace CodeBase.Infrastructure.States
 {
     public class LoadLevelState : IPaylodedState<string>
     {
-        private readonly IGameStateMachine gameStateMachine;
         private readonly ISceneLoader sceneLoader;
         private readonly IGameFactory gameFactory;
         private readonly IEnemySpawner enemySpawner;
 
-        public LoadLevelState(IGameStateMachine gameStateMachine, ISceneLoader sceneLoader, IGameFactory gameFactory,
+        public LoadLevelState(ISceneLoader sceneLoader, IGameFactory gameFactory,
             IEnemySpawner enemySpawner)
         {
-            this.gameStateMachine = gameStateMachine;
             this.sceneLoader = sceneLoader;
             this.gameFactory = gameFactory;
             this.enemySpawner = enemySpawner;
@@ -37,7 +35,7 @@ namespace CodeBase.Infrastructure.States
 
         private void InitGame()
         {
-            gameFactory.CreateParent();
+            gameFactory.CreateGameObjectsParent();
             gameFactory.CreateTank(Vector3.zero);
             gameFactory.CreateBulletPool();
             enemySpawner.StartEnemySpawn();

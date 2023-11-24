@@ -31,8 +31,7 @@ namespace CodeBase.Logic
 
         private void DeactivateBullet()
         {
-            if (transform.position.x > 50 || transform.position.x < -50 || transform.position.y > 50 ||
-                transform.position.y < -50)
+            if (transform.position.x is > 50 or < -50 || transform.position.y is > 50 or < -50)
                 gameObject.SetActive(false);
         }
     }

@@ -2,11 +2,8 @@ using CodeBase.Infrastructure;
 using CodeBase.Infrastructure.Factories;
 using CodeBase.Infrastructure.States;
 using CodeBase.Services;
-using CodeBase.Services.PlayerProgressService;
-using CodeBase.Services.SaveLoadService;
 using CodeBase.Services.StaticDataService;
 using CodeBase.UI.Factories;
-using UnityEngine;
 using Zenject;
 
 namespace CodeBase.CompositionRoot
@@ -29,10 +26,6 @@ namespace CodeBase.CompositionRoot
 
             BindUIFactory();
 
-            BindPlayerProgressService();
-
-            BindSaveLoadService();
-            
             BindEnemySpawner();
         }
 
@@ -49,20 +42,6 @@ namespace CodeBase.CompositionRoot
             Container
                 .BindFactory<GameBootstrapper, GameBootstrapper.Factory>()
                 .FromComponentInNewPrefabResource(InfrastructureAssetPath.GameBootstraper);
-        }
-
-        private void BindSaveLoadService()
-        {
-            Container
-                .BindInterfacesAndSelfTo<SaveLoadService>()
-                .AsSingle();
-        }
-
-        private void BindPlayerProgressService()
-        {
-            Container
-                .BindInterfacesAndSelfTo<PlayerProgressService>()
-                .AsSingle();
         }
 
         private void BindGameFactory()

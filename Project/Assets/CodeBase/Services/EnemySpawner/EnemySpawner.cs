@@ -13,7 +13,7 @@ namespace CodeBase.Services
         private readonly IGameFactory gameFactory;
         private readonly ICoroutineRunner coroutineRunner;
 
-        EnemyEnum[] enumValues = (EnemyEnum[])Enum.GetValues(typeof(EnemyEnum));
+        readonly EnemyEnum[] enumValues = (EnemyEnum[])Enum.GetValues(typeof(EnemyEnum));
 
         private int enemyCount;
         private int maxEnemyCount = 10;
@@ -34,11 +34,6 @@ namespace CodeBase.Services
             coroutineRunner.StartCoroutine(EnemySpawnRoutine());
         }
 
-        public void OnEnemyDestroyed()
-        {
-            enemyCount--;
-        }
-
         private IEnumerator EnemySpawnRoutine()
         {
             while (true)
@@ -55,16 +50,18 @@ namespace CodeBase.Services
             enemyCount++;
         }
 
-        private Vector3 GetRandomPosition()
-        {
-            Vector3 randomPointOnPerimeter = GetRandomPointOnPerimeter(Vector3.zero, planeWidth, planeLength);
-            return randomPointOnPerimeter;
-        }
+        public void OnEnemyDestroyed() => enemyCount--;
 
         private EnemyEnum GetRandomEnemy()
         {
             int randomIndex = Random.Range(0, enumValues.Length);
             return enumValues[randomIndex];
+        }
+
+        private Vector3 GetRandomPosition()
+        {
+            Vector3 randomPointOnPerimeter = GetRandomPointOnPerimeter(Vector3.zero, planeWidth, planeLength);
+            return randomPointOnPerimeter;
         }
 
         Vector3 GetRandomPointOnPerimeter(Vector3 position, float width, float length)

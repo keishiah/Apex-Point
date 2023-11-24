@@ -9,7 +9,7 @@ namespace CodeBase.Infrastructure
 
         [Inject]
         void Construct(GameBootstrapper.Factory bootstrapperFactory) => 
-            this.gameBootstrapperFactory = bootstrapperFactory;
+            gameBootstrapperFactory = bootstrapperFactory;
 
         private void Awake()
         {

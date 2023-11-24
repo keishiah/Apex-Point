@@ -10,8 +10,8 @@ namespace CodeBase.Infrastructure.Factories
 {
     public class GameFactory : IGameFactory
     {
-        private const string HeroPrefabPath = "Gameobjects/Tank";
-        private const string BulletPrefabPath = "Gameobjects/Bullet";
+        private const string HeroPrefabPath = InfrastructureAssetPath.TankPrefabPath;
+        private const string BulletPrefabPath = InfrastructureAssetPath.BulletPrefabPath;
         private readonly IStaticDataService staticDataService;
         private readonly DiContainer diContainer;
 
@@ -26,7 +26,7 @@ namespace CodeBase.Infrastructure.Factories
             this.diContainer = diContainer;
         }
 
-        public void CreateParent()
+        public void CreateGameObjectsParent()
         {
             gameObjectsParent = new GameObject("GameObjectsParent").transform;
         }

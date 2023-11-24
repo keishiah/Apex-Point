@@ -1,5 +1,4 @@
 ﻿using CodeBase.Services.StaticDataService;
-using UnityEngine;
 using Zenject;
 
 namespace CodeBase.Infrastructure.States
@@ -19,7 +18,7 @@ namespace CodeBase.Infrastructure.States
         public void Enter()
         {
             InitServices();
-            gameStateMachine.Enter<LoadPlayerProgressState>();
+            gameStateMachine.Enter<LoadLevelState, string>(InfrastructureAssetPath.StartGameScene);
         }
 
         private void InitServices()

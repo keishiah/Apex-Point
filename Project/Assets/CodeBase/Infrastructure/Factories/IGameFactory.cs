@@ -9,7 +9,7 @@ namespace CodeBase.Infrastructure.Factories
     {
         void Cleanup();
         GameObject CreateTank(Vector3 position);
-        void CreateParent();
+        void CreateGameObjectsParent();
         GameObject CreateEnemy(Vector3 position, EnemyEnum enemyType);
         void CreateBulletPool();
         Bullet GetBullet();
