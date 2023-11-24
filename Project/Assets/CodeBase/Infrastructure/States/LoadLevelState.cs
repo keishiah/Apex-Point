@@ -41,7 +41,7 @@ namespace CodeBase.Infrastructure.States
             enemySpawner.StartEnemySpawn();
         }
 
-        public class Factory : PlaceholderFactory<IGameStateMachine, LoadLevelState>
+        public class Factory : PlaceholderFactory<LoadLevelState>
         {
         }
     }

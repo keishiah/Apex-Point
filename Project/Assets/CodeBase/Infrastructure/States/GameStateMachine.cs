@@ -15,7 +15,7 @@ namespace CodeBase.Infrastructure.States
             registeredStates = new Dictionary<Type, IExitableState>();
             
             RegisterState(bootstrapStateFactory.Create(this));
-            RegisterState(loadLevelStateFactory.Create(this));
+            RegisterState(loadLevelStateFactory.Create());
         }
 
         private void RegisterState<TState>(TState state) where TState : IExitableState =>
