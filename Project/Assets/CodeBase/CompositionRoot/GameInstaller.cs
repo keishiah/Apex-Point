@@ -1,10 +1,7 @@
 using CodeBase.Infrastructure;
 using CodeBase.Infrastructure.Factories;
 using CodeBase.Infrastructure.States;
-using CodeBase.Services.AdsService;
-using CodeBase.Services.InputService;
 using CodeBase.Services.PlayerProgressService;
-using CodeBase.Services.RandomizerService;
 using CodeBase.Services.SaveLoadService;
 using CodeBase.Services.StaticDataService;
 using CodeBase.UI.Factories;
@@ -33,15 +30,9 @@ namespace CodeBase.CompositionRoot
 
             BindUIFactory();
 
-            BindRandomizeService();
-
             BindPlayerProgressService();
 
             BindSaveLoadService();
-
-            BindAdsService();
-
-            BindInputService();
         }
 
         private void BindStaticDataService() =>
@@ -53,13 +44,7 @@ namespace CodeBase.CompositionRoot
                 .BindFactory<GameBootstrapper, GameBootstrapper.Factory>()
                 .FromComponentInNewPrefabResource(InfrastructureAssetPath.GameBootstraper);
         }
-
-        private void BindInputService() =>
-            Container.BindInterfacesAndSelfTo<InputService>().AsSingle();
-
-        private void BindAdsService() =>
-            Container.BindInterfacesAndSelfTo<AdsService>().AsSingle();
-
+        
         private void BindSaveLoadService()
         {
             Container
@@ -73,9 +58,6 @@ namespace CodeBase.CompositionRoot
                 .BindInterfacesAndSelfTo<PlayerProgressService>()
                 .AsSingle();
         }
-
-        private void BindRandomizeService() =>
-            Container.BindInterfacesAndSelfTo<RandomizerService>().AsSingle();
 
         private void BindGameFactory()
         {
