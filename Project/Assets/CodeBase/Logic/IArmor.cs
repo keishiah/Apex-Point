@@ -2,7 +2,7 @@
 {
     public interface IArmor
     {
-        int Armor { get; set; }
+        float Armor { get; set; }
 
     }
 }

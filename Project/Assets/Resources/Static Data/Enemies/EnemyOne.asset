@@ -15,5 +15,6 @@ MonoBehaviour:
   enemyEnum: 0
   enemyPrefab: {fileID: 7241158434138224070, guid: 0a14323e1c5a1974ba9d52db1d5f32d8, type: 3}
   health: 5
-  armor: 3
-  moveSpeed: 5
+  damage: 5
+  armor: 50
+  moveSpeed: 1

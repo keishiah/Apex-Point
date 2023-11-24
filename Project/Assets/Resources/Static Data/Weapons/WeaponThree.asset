@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: WeaponThree
   m_EditorClassIdentifier: 
   weaponEnum: 2
-  damage: 3
+  damage: 15
   color: {r: 1, g: 0.9515715, b: 0.023584902, a: 0}

@@ -47,6 +47,7 @@ namespace CodeBase.Infrastructure.Factories
                 Quaternion.identity, gameObjectsParent);
             enemy.GetComponent<AgentMoveToPlayer>().Construct(tank.transform, enemyData.moveSpeed);
             enemy.GetComponent<EnemyHealth>().Construct(enemyData.health, enemyData.armor);
+            enemy.GetComponent<EnemyHit>().Construct(enemyData.damage);
             return enemy;
         }
 

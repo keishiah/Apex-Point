@@ -8,8 +8,7 @@ namespace CodeBase.Enemy
     {
         private float current;
         private float max;
-        private int armor;
-
+        private float armor;
         public event Action HealthChanged;
 
         public void Construct(float max, int armor)
@@ -31,19 +30,19 @@ namespace CodeBase.Enemy
             set => max = value;
         }
 
-        public int Armor
+        public float Armor
         {
-            get => armor;
+            get => 1 - armor / 100;
             set => armor = value;
         }
 
         public void TakeDamage(float damage)
         {
-            Current -= damage;
+            Current -= damage * Armor;
             HealthChanged?.Invoke();
         }
 
-        public void ResetHealth()
+        private void ResetHealth()
         {
             Current = Max;
             HealthChanged?.Invoke();

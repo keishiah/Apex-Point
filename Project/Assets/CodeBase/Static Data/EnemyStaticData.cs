@@ -9,6 +9,7 @@ namespace CodeBase.Static_Data
         public EnemyEnum enemyEnum;
         public GameObject enemyPrefab;
         public float health;
+        public int damage;
         public int armor;
         public float moveSpeed;
     }

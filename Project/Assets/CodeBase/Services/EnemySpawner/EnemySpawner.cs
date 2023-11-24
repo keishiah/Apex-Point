@@ -16,6 +16,8 @@ namespace CodeBase.Services
         EnemyEnum[] enumValues = (EnemyEnum[])Enum.GetValues(typeof(EnemyEnum));
 
         private int enemyCount;
+        private int maxEnemyCount = 10;
+
         private float planeWidth = 60;
         private float planeLength = 52;
         private readonly WaitForSeconds waitTime = new WaitForSeconds(2f);
@@ -39,9 +41,10 @@ namespace CodeBase.Services
 
         private IEnumerator EnemySpawnRoutine()
         {
-            while (enemyCount < 10)
+            while (true)
             {
-                SpawnEnemy();
+                if (enemyCount < maxEnemyCount)
+                    SpawnEnemy();
                 yield return waitTime;
             }
         }
@@ -66,7 +69,7 @@ namespace CodeBase.Services
 
         Vector3 GetRandomPointOnPerimeter(Vector3 position, float width, float length)
         {
-            int side = Random.Range(0, 4); // 0: вверх, 1: вправо, 2: вниз, 3: влево
+            int side = Random.Range(0, 4);
 
             float randomX = 0f;
             float randomY = 0f;

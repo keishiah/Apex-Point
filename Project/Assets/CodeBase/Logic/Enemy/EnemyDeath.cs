@@ -1,15 +1,23 @@
-using System;
+using CodeBase.Services;
 using UnityEngine;
+using Zenject;
 
 namespace CodeBase.Enemy
 {
     public class EnemyDeath : MonoBehaviour
     {
-        public EnemyHealth health;
-        public event Action OnEnemyDied;
+        private EnemyHealth health;
+        private IEnemySpawner enemySpawner;
+
+        [Inject]
+        void Construct(IEnemySpawner enemySpawner)
+        {
+            this.enemySpawner = enemySpawner;
+        }
 
         private void Start()
         {
+            health = GetComponent<EnemyHealth>();
             health.HealthChanged += OnHealthChanged;
         }
 
@@ -21,14 +29,15 @@ namespace CodeBase.Enemy
         private void OnHealthChanged()
         {
             if (health.Current <= 0)
+            {
                 Die();
+            }
         }
 
-        private void Die()
+        public void Die()
         {
-            OnEnemyDied?.Invoke();
+            enemySpawner.OnEnemyDestroyed();
+            Destroy(gameObject);
         }
-
-
     }
 }
