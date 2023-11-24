@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using CodeBase.Infrastructure.Factories;
+using UnityEngine;
 using Zenject;
 
 namespace CodeBase.Infrastructure.States
@@ -8,13 +9,15 @@ namespace CodeBase.Infrastructure.States
         private readonly IGameStateMachine gameStateMachine;
         private readonly ISceneLoader sceneLoader;
         private readonly ILoadingCurtain loadingCurtain;
+        private readonly IGameFactory gameFactory;
 
         public LoadLevelState(IGameStateMachine gameStateMachine, ISceneLoader sceneLoader,
-            ILoadingCurtain loadingCurtain)
+            ILoadingCurtain loadingCurtain, IGameFactory gameFactory)
         {
             this.gameStateMachine = gameStateMachine;
             this.sceneLoader = sceneLoader;
             this.loadingCurtain = loadingCurtain;
+            this.gameFactory = gameFactory;
         }
 
         public void Enter(string sceneName)
@@ -30,6 +33,12 @@ namespace CodeBase.Infrastructure.States
         private void OnLoaded()
         {
             loadingCurtain.Hide();
+            InitGame();
+        }
+
+        private void InitGame()
+        {
+            gameFactory.CreateTank(Vector3.zero);
         }
 
         public class Factory : PlaceholderFactory<IGameStateMachine, LoadLevelState>

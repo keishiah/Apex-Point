@@ -1,4 +1,5 @@
-﻿using CodeBase.Logic.Weapon;
+﻿using CodeBase.Enemy;
+using CodeBase.Logic.Weapon;
 using CodeBase.Logic.Weapon.WeaponTypes;
 using CodeBase.Static_Data;
 
@@ -8,5 +9,6 @@ namespace CodeBase.Services.StaticDataService
     {
         void Initialize();
         WeaponStaticData GetWeaponData(WeaponEnum weapon);
+        EnemyStaticData GetEnemyData(EnemyEnum enemy);
     }
 }
