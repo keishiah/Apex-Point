@@ -4,8 +4,8 @@ namespace CodeBase.Logic.Tank
 {
     public class MovementController : MonoBehaviour
     {
-        private float minX = -30;
-        private float maxX = 30;
+        private float minX = -37;
+        private float maxX = 37;
         private float minY = -24f;
         private float maxY = 24f;
 

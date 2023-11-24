@@ -7,7 +7,7 @@ namespace CodeBase.Enemy
     {
         private TriggerObserver triggerObserver;
         private EnemyDeath enemyDeath;
-        public int damage;
+        private int damage;
 
         public void Construct(int damage)
         {

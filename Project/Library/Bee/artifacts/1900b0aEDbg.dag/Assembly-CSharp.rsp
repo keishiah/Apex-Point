@@ -376,6 +376,7 @@
 "Assets/CodeBase/Logic/Enemy/EnemyEnum.cs"
 "Assets/CodeBase/Logic/Enemy/EnemyHealth.cs"
 "Assets/CodeBase/Logic/Enemy/EnemyHit.cs"
+"Assets/CodeBase/Logic/HealthUi.cs"
 "Assets/CodeBase/Logic/IArmor.cs"
 "Assets/CodeBase/Logic/IHealth.cs"
 "Assets/CodeBase/Logic/Tank/MovementController.cs"
@@ -399,6 +400,7 @@
 "Assets/CodeBase/Static Data/WeaponStaticData.cs"
 "Assets/CodeBase/UI/Factories/IUIFactory.cs"
 "Assets/CodeBase/UI/Factories/UIFactory.cs"
+"Assets/CodeBase/UI/HpBar.cs"
 "Assets/CodeBase/UI/HUD/HUDRoot.cs"
 "Assets/CodeBase/UI/HUD/IHUDRoot.cs"
 -langversion:9.0

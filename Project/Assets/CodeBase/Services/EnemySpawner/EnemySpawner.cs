@@ -18,7 +18,7 @@ namespace CodeBase.Services
         private int enemyCount;
         private int maxEnemyCount = 10;
 
-        private float planeWidth = 60;
+        private float planeWidth = 76;
         private float planeLength = 52;
         private readonly WaitForSeconds waitTime = new WaitForSeconds(2f);
 
