@@ -40,9 +40,13 @@ namespace CodeBase.Logic.Tank
             {
                 transform.Rotate(Vector3.up, -100 * Time.deltaTime);
             }
+        }
 
-            transform.Rotate(Vector3.up, horizontalInput * 5f * Time.deltaTime);
-            transform.Rotate(Vector3.right, -verticalInput * 5f * Time.deltaTime);
+        private void MoveForward()
+        {
+            Vector3 currentPosition = transform.position;
+            Vector3 newPosition = currentPosition + transform.forward * speed * Time.deltaTime;
+            transform.position = newPosition;
         }
     }
 }

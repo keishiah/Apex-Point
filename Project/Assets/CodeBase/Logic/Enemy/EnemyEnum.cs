@@ -3,5 +3,6 @@
     public enum EnemyEnum
     {
         EnemyOne,
+        EnemyTwo,
     }
 }

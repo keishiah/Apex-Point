@@ -480,10 +480,10 @@ CharacterController:
   serializedVersion: 2
   m_Height: 1.25183
   m_Radius: 1.2931728
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
+  m_SlopeLimit: 0
+  m_StepOffset: 0
+  m_SkinWidth: 0.0001
+  m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &418888646
 MonoBehaviour:
@@ -539,7 +539,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 4592589624331671189, guid: 6e0d43ac2656b3145b09f254e9925be7, type: 3}
-  poolParent: {fileID: 0}
 --- !u!1 &1397629665669033979
 GameObject:
   m_ObjectHideFlags: 0

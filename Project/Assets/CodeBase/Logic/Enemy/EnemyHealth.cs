@@ -12,6 +12,13 @@ namespace CodeBase.Enemy
 
         public event Action HealthChanged;
 
+        public void Construct(float max, int armor)
+        {
+            Max = max;
+            Armor = armor;
+            ResetHealth();
+        }
+
         public float Current
         {
             get => current;

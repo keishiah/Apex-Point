@@ -9,8 +9,9 @@ namespace CodeBase.Services
         public Transform container { get; }
         public List<T> pool;
 
-        public Pooler(T prefab, int count, Transform container)
+        public Pooler(T prefab, int count)
         {
+            container = new GameObject($"{typeof(T)} parent").transform;
             this.prefab = prefab;
             this.container = container;
 
@@ -58,6 +59,5 @@ namespace CodeBase.Services
 
             return CreateObject(true);
         }
-
     }
 }

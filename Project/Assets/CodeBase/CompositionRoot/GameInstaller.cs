@@ -1,6 +1,7 @@
 using CodeBase.Infrastructure;
 using CodeBase.Infrastructure.Factories;
 using CodeBase.Infrastructure.States;
+using CodeBase.Services;
 using CodeBase.Services.PlayerProgressService;
 using CodeBase.Services.SaveLoadService;
 using CodeBase.Services.StaticDataService;
@@ -20,8 +21,6 @@ namespace CodeBase.CompositionRoot
 
             BindSceneLoader();
 
-            BindLoadingCurtain();
-
             BindGameStateMachine();
 
             BindStaticDataService();
@@ -33,6 +32,13 @@ namespace CodeBase.CompositionRoot
             BindPlayerProgressService();
 
             BindSaveLoadService();
+            
+            BindEnemySpawner();
+        }
+
+        private void BindEnemySpawner()
+        {
+            Container.BindInterfacesAndSelfTo<EnemySpawner>().AsSingle();
         }
 
         private void BindStaticDataService() =>
@@ -44,7 +50,7 @@ namespace CodeBase.CompositionRoot
                 .BindFactory<GameBootstrapper, GameBootstrapper.Factory>()
                 .FromComponentInNewPrefabResource(InfrastructureAssetPath.GameBootstraper);
         }
-        
+
         private void BindSaveLoadService()
         {
             Container
@@ -82,10 +88,6 @@ namespace CodeBase.CompositionRoot
 
         private void BindSceneLoader() =>
             Container.BindInterfacesAndSelfTo<SceneLoader>().AsSingle();
-
-        private void BindLoadingCurtain() =>
-            Container.Bind<ILoadingCurtain>().To<LoadingCurtain>()
-                .FromComponentInNewPrefabResource(InfrastructureAssetPath.CurtainPath).AsSingle();
 
         private void BindGameStateMachine()
         {

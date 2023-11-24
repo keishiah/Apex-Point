@@ -1,17 +1,24 @@
-﻿using CodeBase.Services.StaticDataService;
+﻿using CodeBase.Enemy;
+using CodeBase.Logic;
+using CodeBase.Services;
+using CodeBase.Services.StaticDataService;
+using CodeBase.Static_Data;
 using UnityEngine;
 using Zenject;
 
 namespace CodeBase.Infrastructure.Factories
 {
-    public class GameFactory : IGameFactory, IInitializable
+    public class GameFactory : IGameFactory
     {
         private const string HeroPrefabPath = "Gameobjects/Tank";
+        private const string BulletPrefabPath = "Gameobjects/Bullet";
         private readonly IStaticDataService staticDataService;
         private readonly DiContainer diContainer;
 
         private Transform gameObjectsParent;
         private GameObject tank;
+        private Pooler<Bullet> bulletPool;
+
 
         public GameFactory(IStaticDataService staticDataService, DiContainer diContainer)
         {
@@ -19,28 +26,41 @@ namespace CodeBase.Infrastructure.Factories
             this.diContainer = diContainer;
         }
 
-        public GameObject CreateParent()
+        public void CreateParent()
         {
-            return new GameObject("GameObjectsParent");
+            gameObjectsParent = new GameObject("GameObjectsParent").transform;
         }
 
         public GameObject CreateTank(Vector3 position)
         {
-            GameObject tank = diContainer.InstantiatePrefabResource(HeroPrefabPath);
-            tank.transform.SetPositionAndRotation(position, Quaternion.Euler(90, -90, 90));
-            return tank;
+            GameObject tankPrefab = diContainer.InstantiatePrefabResource(HeroPrefabPath, gameObjectsParent);
+            tankPrefab.transform.SetPositionAndRotation(position, Quaternion.Euler(90, -90, 90));
+            tank = tankPrefab;
+            return tankPrefab;
         }
 
-        // public GameObject CreateEnemy()
-        // {
-        //     
-        // }
+        public GameObject CreateEnemy(Vector3 position, EnemyEnum enemyType)
+        {
+            EnemyStaticData enemyData = staticDataService.GetEnemyData(enemyType);
+
+            var enemy = diContainer.InstantiatePrefab(enemyData.enemyPrefab, position,
+                Quaternion.identity, gameObjectsParent);
+            enemy.GetComponent<AgentMoveToPlayer>().Construct(tank.transform, enemyData.moveSpeed);
+            enemy.GetComponent<EnemyHealth>().Construct(enemyData.health, enemyData.armor);
+            return enemy;
+        }
+
+        public void CreateBulletPool()
+        {
+            bulletPool = new Pooler<Bullet>(Resources.Load<Bullet>(BulletPrefabPath), 5);
+        }
+
+        public Bullet GetBullet()
+        {
+            return bulletPool.GetFreeElement();
+        }
 
         public void Cleanup()
-        {
-        }
-
-        public void Initialize()
         {
         }
     }

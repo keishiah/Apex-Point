@@ -1,4 +1,5 @@
 ﻿using CodeBase.Infrastructure.Factories;
+using CodeBase.Services;
 using UnityEngine;
 using Zenject;
 
@@ -8,21 +9,20 @@ namespace CodeBase.Infrastructure.States
     {
         private readonly IGameStateMachine gameStateMachine;
         private readonly ISceneLoader sceneLoader;
-        private readonly ILoadingCurtain loadingCurtain;
         private readonly IGameFactory gameFactory;
+        private readonly IEnemySpawner enemySpawner;
 
-        public LoadLevelState(IGameStateMachine gameStateMachine, ISceneLoader sceneLoader,
-            ILoadingCurtain loadingCurtain, IGameFactory gameFactory)
+        public LoadLevelState(IGameStateMachine gameStateMachine, ISceneLoader sceneLoader, IGameFactory gameFactory,
+            IEnemySpawner enemySpawner)
         {
             this.gameStateMachine = gameStateMachine;
             this.sceneLoader = sceneLoader;
-            this.loadingCurtain = loadingCurtain;
             this.gameFactory = gameFactory;
+            this.enemySpawner = enemySpawner;
         }
 
         public void Enter(string sceneName)
         {
-            loadingCurtain.Show();
             sceneLoader.Load(sceneName, OnLoaded);
         }
 
@@ -32,13 +32,15 @@ namespace CodeBase.Infrastructure.States
 
         private void OnLoaded()
         {
-            loadingCurtain.Hide();
             InitGame();
         }
 
         private void InitGame()
         {
+            gameFactory.CreateParent();
             gameFactory.CreateTank(Vector3.zero);
+            gameFactory.CreateBulletPool();
+            enemySpawner.StartEnemySpawn();
         }
 
         public class Factory : PlaceholderFactory<IGameStateMachine, LoadLevelState>
