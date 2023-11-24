@@ -9,6 +9,7 @@ namespace CodeBase.Logic.Weapon
     {
         protected WeaponEnum WeaponType;
         private IStaticDataService staticDataService;
+        private readonly int color = Shader.PropertyToID("_Color");
 
         [Inject]
         void Construct(IStaticDataService staticDataService)
@@ -19,13 +20,13 @@ namespace CodeBase.Logic.Weapon
         private void Start()
         {
             gameObject.GetComponent<MeshRenderer>().material
-                .SetColor("_Color", staticDataService.GetWeaponData(WeaponType).color);
+                .SetColor(color, staticDataService.GetWeaponData(WeaponType).color);
         }
 
         public void Shoot(Bullet bullet, Vector3 direction)
         {
             bullet.InitBullet(staticDataService.GetWeaponData(WeaponType).damage, direction,
-                transform.position + transform.forward * 1.5f);
+                transform.position + transform.forward * 1.5f, staticDataService.GetWeaponData(WeaponType).color);
         }
     }
 }
