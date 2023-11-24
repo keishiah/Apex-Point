@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e7ff279087c49faa6e7822e307fcb6a, type: 3}
   m_Name: WeaponTwo
   m_EditorClassIdentifier: 
-  WeaponEnum: 1
-  Damage: 5
-  Color: {r: 0.915966, g: 1, b: 0.3537736, a: 0}
+  weaponEnum: 1
+  damage: 2
+  color: {r: 0.16409636, g: 1, b: 0, a: 0}
