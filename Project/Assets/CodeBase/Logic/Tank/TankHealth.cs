@@ -6,7 +6,7 @@ namespace CodeBase.Logic.Tank
     public class TankHealth : MonoBehaviour, IHealth
     {
         public float armor;
-        public float max;
+        public float maxHealth;
         private float current;
         public event Action HealthChanged;
 
@@ -23,8 +23,8 @@ namespace CodeBase.Logic.Tank
 
         public float Max
         {
-            get => max;
-            set => max = value;
+            get => maxHealth;
+            set => maxHealth = value;
         }
 
         public float Armor => 1 - armor / 100;

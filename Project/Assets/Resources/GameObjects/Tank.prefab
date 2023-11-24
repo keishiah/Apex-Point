@@ -552,7 +552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   armor: 40
-  max: 30
+  maxHealth: 30
 --- !u!1 &1397629665669033979
 GameObject:
   m_ObjectHideFlags: 0
