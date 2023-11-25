@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 473530406}
   - component: {fileID: 473530408}
   m_Layer: 0
-  m_Name: TankFree_Canon (1)
+  m_Name: WeaponTwo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 2095537211}
   - component: {fileID: 2095537214}
   m_Layer: 0
-  m_Name: TankFree_Canon (2)
+  m_Name: WeaponThree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 242027601945640022}
   - component: {fileID: 915770628}
   m_Layer: 6
-  m_Name: TankFree_Canon
+  m_Name: WeaponOne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -563,6 +563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  rotateSpeed: 100
 --- !u!114 &418888651
 MonoBehaviour:
   m_ObjectHideFlags: 0
