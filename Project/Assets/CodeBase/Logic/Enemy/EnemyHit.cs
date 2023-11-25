@@ -1,38 +1,37 @@
-﻿using CodeBase.Logic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace CodeBase.Enemy
+namespace CodeBase.Logic.Enemy
 {
     public class EnemyHit : MonoBehaviour
     {
-        private TriggerObserver triggerObserver;
-        private EnemyDeath enemyDeath;
-        private int damage;
+        private TriggerObserver _triggerObserver;
+        private EnemyDeath _enemyDeath;
+        private int _damage;
 
         public void Construct(int damage)
         {
-            this.damage = damage;
+            _damage = damage;
         }
 
         private void Start()
         {
-            triggerObserver = GetComponent<TriggerObserver>();
-            triggerObserver.TriggerEnter += TriggerEnter;
-            enemyDeath = GetComponent<EnemyDeath>();
+            _triggerObserver = GetComponent<TriggerObserver>();
+            _triggerObserver.TriggerEnter += TriggerEnter;
+            _enemyDeath = GetComponent<EnemyDeath>();
         }
 
         private void TriggerEnter(Collider obj)
         {
             if (obj.CompareTag("Player"))
             {
-                obj.GetComponent<IHealth>().TakeDamage(damage);
-                enemyDeath.Die();
+                obj.GetComponent<IHealth>().TakeDamage(_damage);
+                _enemyDeath.Die();
             }
         }
 
         private void OnDestroy()
         {
-            triggerObserver.TriggerEnter -= TriggerEnter;
+            _triggerObserver.TriggerEnter -= TriggerEnter;
         }
     }
 }

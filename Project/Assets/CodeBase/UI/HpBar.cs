@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace CodeBase.UI.Elements
+namespace CodeBase.UI
 {
     public class HpBar : MonoBehaviour
     {
-        public Image ImageCurrent;
+        public Image imageCurrent;
 
         public void SetValue(float current, float max)
         {
-            ImageCurrent.fillAmount = current / max;
+            imageCurrent.fillAmount = current / max;
         }
     }
 }

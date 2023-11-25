@@ -1,66 +1,66 @@
 ﻿using System;
 using System.Collections;
-using CodeBase.Enemy;
 using CodeBase.Infrastructure;
 using CodeBase.Infrastructure.Factories;
+using CodeBase.Logic.Enemy;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace CodeBase.Services
+namespace CodeBase.Services.EnemySpawner
 {
     public class EnemySpawner : IEnemySpawner
     {
-        private readonly IGameFactory gameFactory;
-        private readonly ICoroutineRunner coroutineRunner;
+        private readonly IGameFactory _gameFactory;
+        private readonly ICoroutineRunner _coroutineRunner;
 
-        readonly EnemyEnum[] enumValues = (EnemyEnum[])Enum.GetValues(typeof(EnemyEnum));
+        private readonly EnemyEnum[] _enumValues = (EnemyEnum[])Enum.GetValues(typeof(EnemyEnum));
 
-        private int enemyCount;
-        private int maxEnemyCount = 10;
+        private int _enemyCount;
+        private int _maxEnemyCount = 10;
 
-        private float planeWidth = 76;
-        private float planeLength = 52;
-        private readonly WaitForSeconds waitTime = new WaitForSeconds(2f);
+        private float _planeWidth = 76;
+        private float _planeLength = 52;
+        private readonly WaitForSeconds _waitTime = new(2f);
 
         public EnemySpawner(IGameFactory gameFactory, ICoroutineRunner coroutineRunner)
         {
-            this.gameFactory = gameFactory;
-            this.coroutineRunner = coroutineRunner;
+            _gameFactory = gameFactory;
+            _coroutineRunner = coroutineRunner;
         }
 
         public void StartEnemySpawn()
         {
-            enemyCount = 0;
-            coroutineRunner.StartCoroutine(EnemySpawnRoutine());
+            _enemyCount = 0;
+            _coroutineRunner.StartCoroutine(EnemySpawnRoutine());
         }
 
         private IEnumerator EnemySpawnRoutine()
         {
             while (true)
             {
-                if (enemyCount < maxEnemyCount)
+                if (_enemyCount < _maxEnemyCount)
                     SpawnEnemy();
-                yield return waitTime;
+                yield return _waitTime;
             }
         }
 
         private void SpawnEnemy()
         {
-            gameFactory.CreateEnemy(GetRandomPosition(), GetRandomEnemy());
-            enemyCount++;
+            _gameFactory.CreateEnemy(GetRandomPosition(), GetRandomEnemy());
+            _enemyCount++;
         }
 
-        public void OnEnemyDestroyed() => enemyCount--;
+        public void OnEnemyDestroyed() => _enemyCount--;
 
         private EnemyEnum GetRandomEnemy()
         {
-            int randomIndex = Random.Range(0, enumValues.Length);
-            return enumValues[randomIndex];
+            int randomIndex = Random.Range(0, _enumValues.Length);
+            return _enumValues[randomIndex];
         }
 
         private Vector3 GetRandomPosition()
         {
-            Vector3 randomPointOnPerimeter = GetRandomPointOnPerimeter(Vector3.zero, planeWidth, planeLength);
+            Vector3 randomPointOnPerimeter = GetRandomPointOnPerimeter(Vector3.zero, _planeWidth, _planeLength);
             return randomPointOnPerimeter;
         }
 

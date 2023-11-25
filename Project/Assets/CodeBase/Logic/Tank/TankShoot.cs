@@ -7,25 +7,25 @@ namespace CodeBase.Logic.Tank
 {
     public class TankShoot : MonoBehaviour
     {
-        private WeaponSwapper weaponSwapper;
-        private IGameFactory gameFactory;
+        private WeaponSwapper _weaponSwapper;
+        private IGameFactory _gameFactory;
 
         [Inject]
         void Construct(IGameFactory gameFactory)
         {
-            this.gameFactory = gameFactory;
+            _gameFactory = gameFactory;
         }
 
         private void Start()
         {
-            weaponSwapper = GetComponent<WeaponSwapper>();
+            _weaponSwapper = GetComponent<WeaponSwapper>();
         }
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.X))
             {
-                weaponSwapper.GetActiveWeapon().Shoot(gameFactory.GetBullet(), transform.forward);
+                _weaponSwapper.GetActiveWeapon().Shoot(_gameFactory.GetBullet(), transform.forward);
             }
         }
     }

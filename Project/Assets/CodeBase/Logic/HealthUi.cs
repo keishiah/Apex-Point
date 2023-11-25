@@ -1,14 +1,14 @@
-﻿using CodeBase.UI.Elements;
+﻿using CodeBase.UI;
 using UnityEngine;
 
 namespace CodeBase.Logic
 {
     public class HealthUi : MonoBehaviour
     {
-        public HpBar HpBar;
+        public HpBar hpBar;
         private IHealth _health;
 
-        public void Construct(IHealth health)
+        private void Construct(IHealth health)
         {
             _health = health;
             _health.HealthChanged += UpdateHpBar;
@@ -20,7 +20,7 @@ namespace CodeBase.Logic
             if (health != null)
             {
                 Construct(health);
-                HpBar.SetValue(_health.Current, _health.Max);
+                hpBar.SetValue(_health.Current, _health.Max);
             }
         }
 
@@ -32,7 +32,7 @@ namespace CodeBase.Logic
 
         private void UpdateHpBar()
         {
-            HpBar.SetValue(_health.Current, _health.Max);
+            hpBar.SetValue(_health.Current, _health.Max);
         }
     }
 }

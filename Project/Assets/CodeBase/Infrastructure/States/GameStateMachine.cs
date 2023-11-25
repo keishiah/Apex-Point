@@ -5,21 +5,21 @@ namespace CodeBase.Infrastructure.States
 {
     public class GameStateMachine : IGameStateMachine
     {
-        private Dictionary<Type, IExitableState> registeredStates;
-        private IExitableState currentState;
+        private readonly Dictionary<Type, IExitableState> _registeredStates;
+        private IExitableState _currentState;
 
         public GameStateMachine(
             BootstrapState.Factory bootstrapStateFactory,
             LoadLevelState.Factory loadLevelStateFactory)
         {
-            registeredStates = new Dictionary<Type, IExitableState>();
+            _registeredStates = new Dictionary<Type, IExitableState>();
             
             RegisterState(bootstrapStateFactory.Create(this));
             RegisterState(loadLevelStateFactory.Create());
         }
 
         private void RegisterState<TState>(TState state) where TState : IExitableState =>
-            registeredStates.Add(typeof(TState), state);
+            _registeredStates.Add(typeof(TState), state);
 
         public void Enter<TState>() where TState : class, IState
         {
@@ -35,15 +35,15 @@ namespace CodeBase.Infrastructure.States
 
         private TState ChangeState<TState>() where TState : class, IExitableState
         {
-            currentState?.Exit();
+            _currentState?.Exit();
       
             TState state = GetState<TState>();
-            currentState = state;
+            _currentState = state;
       
             return state;
         }
     
         private TState GetState<TState>() where TState : class, IExitableState => 
-            registeredStates[typeof(TState)] as TState;
+            _registeredStates[typeof(TState)] as TState;
     }
 }

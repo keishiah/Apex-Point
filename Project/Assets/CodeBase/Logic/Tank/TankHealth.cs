@@ -7,7 +7,7 @@ namespace CodeBase.Logic.Tank
     {
         public float armor;
         public float maxHealth;
-        private float current;
+        private float _current;
         public event Action HealthChanged;
 
         private void Start()
@@ -17,8 +17,8 @@ namespace CodeBase.Logic.Tank
 
         public float Current
         {
-            get => current;
-            set => current = value;
+            get => _current;
+            set => _current = value;
         }
 
         public float Max
@@ -27,7 +27,7 @@ namespace CodeBase.Logic.Tank
             set => maxHealth = value;
         }
 
-        public float Armor => 1 - armor / 100;
+        private float Armor => 1 - armor / 100;
 
         public void TakeDamage(float damage)
         {
@@ -35,7 +35,7 @@ namespace CodeBase.Logic.Tank
             HealthChanged?.Invoke();
         }
 
-        public void ResetHealth()
+        private void ResetHealth()
         {
             Current = Max;
             HealthChanged?.Invoke();

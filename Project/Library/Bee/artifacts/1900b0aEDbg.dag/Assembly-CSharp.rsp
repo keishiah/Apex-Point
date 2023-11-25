@@ -353,7 +353,6 @@
 "Assets/CodeBase/CompositionRoot/GameInstaller.cs"
 "Assets/CodeBase/Infrastructure/CoroutineRunner.cs"
 "Assets/CodeBase/Infrastructure/Factories/GameFactory.cs"
-"Assets/CodeBase/Infrastructure/Factories/ICube.cs"
 "Assets/CodeBase/Infrastructure/Factories/IGameFactory.cs"
 "Assets/CodeBase/Infrastructure/GameBootstrapper.cs"
 "Assets/CodeBase/Infrastructure/GameRunner.cs"
@@ -401,8 +400,6 @@
 "Assets/CodeBase/UI/Factories/IUIFactory.cs"
 "Assets/CodeBase/UI/Factories/UIFactory.cs"
 "Assets/CodeBase/UI/HpBar.cs"
-"Assets/CodeBase/UI/HUD/HUDRoot.cs"
-"Assets/CodeBase/UI/HUD/IHUDRoot.cs"
 -langversion:9.0
 
 /deterministic

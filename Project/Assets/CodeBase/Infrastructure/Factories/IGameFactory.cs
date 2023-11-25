@@ -1,6 +1,5 @@
-﻿using CodeBase.Enemy;
-using CodeBase.Logic;
-using CodeBase.UI.HUD;
+﻿using CodeBase.Logic.Bullet;
+using CodeBase.Logic.Enemy;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure.Factories

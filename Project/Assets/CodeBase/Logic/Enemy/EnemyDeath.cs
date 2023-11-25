@@ -1,34 +1,35 @@
 using CodeBase.Services;
+using CodeBase.Services.EnemySpawner;
 using UnityEngine;
 using Zenject;
 
-namespace CodeBase.Enemy
+namespace CodeBase.Logic.Enemy
 {
     public class EnemyDeath : MonoBehaviour
     {
-        private EnemyHealth health;
-        private IEnemySpawner enemySpawner;
+        private EnemyHealth _health;
+        private IEnemySpawner _enemySpawner;
 
         [Inject]
         void Construct(IEnemySpawner enemySpawner)
         {
-            this.enemySpawner = enemySpawner;
+            _enemySpawner = enemySpawner;
         }
 
         private void Start()
         {
-            health = GetComponent<EnemyHealth>();
-            health.HealthChanged += OnHealthChanged;
+            _health = GetComponent<EnemyHealth>();
+            _health.HealthChanged += OnHealthChanged;
         }
 
         private void OnDestroy()
         {
-            health.HealthChanged -= OnHealthChanged;
+            _health.HealthChanged -= OnHealthChanged;
         }
 
         private void OnHealthChanged()
         {
-            if (health.Current <= 0)
+            if (_health.Current <= 0)
             {
                 Die();
             }
@@ -36,7 +37,7 @@ namespace CodeBase.Enemy
 
         public void Die()
         {
-            enemySpawner.OnEnemyDestroyed();
+            _enemySpawner.OnEnemyDestroyed();
             Destroy(gameObject);
         }
     }

@@ -1,5 +1,4 @@
-﻿using CodeBase.Enemy;
-using CodeBase.Logic.Weapon;
+﻿using CodeBase.Logic.Enemy;
 using CodeBase.Logic.Weapon.WeaponTypes;
 using CodeBase.Static_Data;
 

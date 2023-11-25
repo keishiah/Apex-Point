@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8197f744084944d885bb732e6f85a8d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ImageCurrent: {fileID: 6760625043273507594}
+  imageCurrent: {fileID: 6760625043273507594}
 --- !u!1 &7241158434138224070
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,8 +254,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 006c7d904fcd45399ae94bce35c0cf85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  heroTransform: {fileID: 0}
 --- !u!114 &1286046898439926617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,7 +290,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 930969a00c924e60b05d90d1ab99306e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
 --- !u!114 &9220142229671079489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,7 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb98fdf1d3d4586ad7d5f4761c39850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HpBar: {fileID: 8038087633979862027}
+  hpBar: {fileID: 8038087633979862027}
 --- !u!1 &7618951249889220125
 GameObject:
   m_ObjectHideFlags: 0

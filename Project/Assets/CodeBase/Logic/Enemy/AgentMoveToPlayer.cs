@@ -1,25 +1,23 @@
 using UnityEngine;
 
-namespace CodeBase.Enemy
+namespace CodeBase.Logic.Enemy
 {
     public class AgentMoveToPlayer : MonoBehaviour
     {
-        [HideInInspector] public float speed = 1f;
-
-        public Transform heroTransform;
+        private float _speed = 1f;
+        private Transform _heroTransform;
 
         public void Construct(Transform heroTransform, float speed)
         {
-            this.heroTransform = heroTransform;
-            this.speed = speed;
+            _heroTransform = heroTransform;
+            _speed = speed;
         }
-
 
         private void Update()
         {
-            Vector3 direction = heroTransform.position - transform.position;
+            Vector3 direction = _heroTransform.position - transform.position;
             direction.Normalize();
-            transform.Translate(direction * speed * Time.deltaTime);
+            transform.Translate(direction * (_speed * Time.deltaTime));
         }
     }
 }

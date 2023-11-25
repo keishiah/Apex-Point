@@ -1,4 +1,4 @@
-﻿namespace CodeBase.Enemy
+﻿namespace CodeBase.Logic.Enemy
 {
     public enum EnemyEnum
     {

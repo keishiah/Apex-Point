@@ -1,14 +1,13 @@
 using System;
-using CodeBase.Logic;
 using UnityEngine;
 
-namespace CodeBase.Enemy
+namespace CodeBase.Logic.Enemy
 {
     public class EnemyHealth : MonoBehaviour, IHealth, IArmor
     {
-        private float current;
-        private float max;
-        private float armor;
+        private float _current;
+        private float _max;
+        private float _armor;
         public event Action HealthChanged;
 
         public void Construct(float max, int armor)
@@ -20,20 +19,20 @@ namespace CodeBase.Enemy
 
         public float Current
         {
-            get => current;
-            set => current = value;
+            get => _current;
+            set => _current = value;
         }
 
         public float Max
         {
-            get => max;
-            set => max = value;
+            get => _max;
+            set => _max = value;
         }
 
         public float Armor
         {
-            get => 1 - armor / 100;
-            set => armor = value;
+            get => 1 - _armor / 100;
+            set => _armor = value;
         }
 
         public void TakeDamage(float damage)

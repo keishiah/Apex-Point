@@ -1,23 +1,23 @@
 ﻿using UnityEngine;
 
-namespace CodeBase.Logic
+namespace CodeBase.Logic.Bullet
 {
     public class BulletHit : MonoBehaviour
     {
         public TriggerObserver triggerObserver;
-        private Bullet bullet;
+        private Bullet _bullet;
 
         private void Start()
         {
             triggerObserver = GetComponent<TriggerObserver>();
             triggerObserver.TriggerEnter += TriggerEnter;
-            bullet = GetComponent<Bullet>();
+            _bullet = GetComponent<Bullet>();
         }
 
         private void TriggerEnter(Collider obj)
         {
             gameObject.SetActive(false);
-            obj.GetComponent<IHealth>().TakeDamage(bullet.damage);
+            obj.GetComponent<IHealth>().TakeDamage(_bullet.damage);
         }
 
         private void OnDestroy()

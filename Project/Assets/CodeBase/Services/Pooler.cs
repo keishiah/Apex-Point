@@ -5,22 +5,22 @@ namespace CodeBase.Services
 {
     public class Pooler<T> where T : MonoBehaviour
     {
-        public T prefab { get; }
-        public Transform container { get; }
-        public List<T> pool;
+        private T Prefab { get; }
+        private Transform Container { get; }
+        private List<T> _pool;
 
         public Pooler(T prefab, int count)
         {
-            container = new GameObject($"{typeof(T)} parent").transform;
-            this.prefab = prefab;
-            this.container = container;
+            Container = new GameObject($"{typeof(T)} parent").transform;
+            Prefab = prefab;
+            Container = Container;
 
             CreatePool(count);
         }
 
         private void CreatePool(int count)
         {
-            pool = new List<T>();
+            _pool = new List<T>();
 
             for (int i = 0; i < count; i++)
             {
@@ -30,15 +30,15 @@ namespace CodeBase.Services
 
         private T CreateObject(bool isActiveByDefault = false)
         {
-            var createdObject = Object.Instantiate(prefab, container);
+            var createdObject = Object.Instantiate(Prefab, Container);
             createdObject.gameObject.SetActive(isActiveByDefault);
-            pool.Add(createdObject);
+            _pool.Add(createdObject);
             return createdObject;
         }
 
-        public bool HasFreeElement(out T element)
+        private bool HasFreeElement(out T element)
         {
-            foreach (var unit in pool)
+            foreach (var unit in _pool)
             {
                 if (!unit.gameObject.activeInHierarchy)
                 {

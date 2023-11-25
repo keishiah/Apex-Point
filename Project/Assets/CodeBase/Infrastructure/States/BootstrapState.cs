@@ -5,25 +5,25 @@ namespace CodeBase.Infrastructure.States
 {
     public class BootstrapState : IState
     {
-        private readonly IGameStateMachine gameStateMachine;
-        private readonly IStaticDataService staticDataService;
+        private readonly IGameStateMachine _gameStateMachine;
+        private readonly IStaticDataService _staticDataService;
 
         public BootstrapState(IGameStateMachine gameStateMachine,
             IStaticDataService staticDataService)
         {
-            this.staticDataService = staticDataService;
-            this.gameStateMachine = gameStateMachine;
+            _staticDataService = staticDataService;
+            _gameStateMachine = gameStateMachine;
         }
 
         public void Enter()
         {
             InitServices();
-            gameStateMachine.Enter<LoadLevelState, string>(InfrastructureAssetPath.StartGameScene);
+            _gameStateMachine.Enter<LoadLevelState, string>(InfrastructureAssetPath.StartGameScene);
         }
 
         private void InitServices()
         {
-            staticDataService.Initialize();
+            _staticDataService.Initialize();
         }
 
         public void Exit()

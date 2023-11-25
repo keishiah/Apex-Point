@@ -5,11 +5,11 @@ namespace CodeBase.Infrastructure
 {
     public class GameRunner : MonoBehaviour
     {
-        GameBootstrapper.Factory gameBootstrapperFactory;
+        private GameBootstrapper.Factory _gameBootstrapperFactory;
 
         [Inject]
         void Construct(GameBootstrapper.Factory bootstrapperFactory) => 
-            gameBootstrapperFactory = bootstrapperFactory;
+            _gameBootstrapperFactory = bootstrapperFactory;
 
         private void Awake()
         {
@@ -17,7 +17,7 @@ namespace CodeBase.Infrastructure
       
             if(bootstrapper != null) return;
 
-            gameBootstrapperFactory.Create();
+            _gameBootstrapperFactory.Create();
         }
     }
 }

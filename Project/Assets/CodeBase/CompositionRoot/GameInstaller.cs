@@ -2,6 +2,7 @@ using CodeBase.Infrastructure;
 using CodeBase.Infrastructure.Factories;
 using CodeBase.Infrastructure.States;
 using CodeBase.Services;
+using CodeBase.Services.EnemySpawner;
 using CodeBase.Services.StaticDataService;
 using CodeBase.UI.Factories;
 using Zenject;
@@ -12,7 +13,7 @@ namespace CodeBase.CompositionRoot
     {
         public override void InstallBindings()
         {
-            BindGameBootstraperFactory();
+            BindGameBootstrapperFactory();
 
             BindCoroutineRunner();
 
@@ -37,7 +38,7 @@ namespace CodeBase.CompositionRoot
         private void BindStaticDataService() =>
             Container.BindInterfacesAndSelfTo<StaticDataService>().AsSingle();
 
-        private void BindGameBootstraperFactory()
+        private void BindGameBootstrapperFactory()
         {
             Container
                 .BindFactory<GameBootstrapper, GameBootstrapper.Factory>()

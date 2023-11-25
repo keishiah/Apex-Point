@@ -1,4 +1,3 @@
-using UnityEngine;
 using Zenject;
 
 namespace CodeBase.Infrastructure.States
@@ -7,7 +6,7 @@ namespace CodeBase.Infrastructure.States
     {
         public override void InstallBindings()
         {
-            //So when something in your code asks for a IGameStateMachine, Zenject should use the BootstrapState.Factory to create an instance of BootstrapState.
+            //При создании GameStateMachine создает инстансы BootstrapState и LoadLevelState.
             Container.BindFactory<IGameStateMachine, BootstrapState, BootstrapState.Factory>();
             Container.BindFactory<LoadLevelState, LoadLevelState.Factory>();
 

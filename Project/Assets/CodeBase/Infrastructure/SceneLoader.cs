@@ -12,13 +12,13 @@ namespace CodeBase.Infrastructure
 
     public class SceneLoader : ISceneLoader
     {
-        private readonly ICoroutineRunner coroutineRunner;
+        private readonly ICoroutineRunner _coroutineRunner;
 
         public SceneLoader(ICoroutineRunner coroutineRunner) => 
-            this.coroutineRunner = coroutineRunner;
+            _coroutineRunner = coroutineRunner;
 
         public void Load(string name, Action onLoaded = null) =>
-            coroutineRunner.StartCoroutine(LoadScene(name, onLoaded));
+            _coroutineRunner.StartCoroutine(LoadScene(name, onLoaded));
     
         private IEnumerator LoadScene(string nextScene, Action onLoaded = null)
         {
