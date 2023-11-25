@@ -27,7 +27,7 @@ namespace CodeBase.Logic.Tank
             _verticalInput = Input.GetAxis("Vertical");
             Vector3 inputDir = new Vector3(0, _verticalInput, 0);
             if (inputDir.sqrMagnitude > .01f)
-                _characterController.Move(speed * transform.forward * _verticalInput * Time.deltaTime);
+                _characterController.Move(transform.forward * (speed * _verticalInput * Time.deltaTime));
         }
 
         private void SetMovingDirection()

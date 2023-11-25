@@ -16,10 +16,8 @@ namespace CodeBase.Services.EnemySpawner
         private readonly EnemyEnum[] _enumValues = (EnemyEnum[])Enum.GetValues(typeof(EnemyEnum));
 
         private int _enemyCount;
-        private int _maxEnemyCount = 10;
+        private const int MaxEnemyCount = 10;
 
-        private float _planeWidth = 76;
-        private float _planeLength = 40;
         private readonly WaitForSeconds _waitTime = new(2f);
 
         public EnemySpawner(IGameFactory gameFactory, ICoroutineRunner coroutineRunner)
@@ -38,7 +36,7 @@ namespace CodeBase.Services.EnemySpawner
         {
             while (true)
             {
-                if (_enemyCount < _maxEnemyCount)
+                if (_enemyCount < MaxEnemyCount)
                     SpawnEnemy();
                 yield return _waitTime;
             }
@@ -60,7 +58,8 @@ namespace CodeBase.Services.EnemySpawner
 
         private Vector3 GetRandomPosition()
         {
-            Vector3 randomPointOnPerimeter = GetRandomPointOnPerimeter(Vector3.zero, _planeWidth, _planeLength);
+            Vector3 randomPointOnPerimeter = GetRandomPointOnPerimeter(Vector3.zero, Static_Data.PlaneSize.PlaneWidth,
+                Static_Data.PlaneSize.PlaneLength);
             return randomPointOnPerimeter;
         }
 

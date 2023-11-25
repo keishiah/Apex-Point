@@ -24,15 +24,15 @@ namespace CodeBase.Logic
             }
         }
 
+        private void UpdateHpBar()
+        {
+            hpBar.SetValue(_health.Current, _health.Max);
+        }
+
         private void OnDestroy()
         {
             if (_health != null)
                 _health.HealthChanged -= UpdateHpBar;
-        }
-
-        private void UpdateHpBar()
-        {
-            hpBar.SetValue(_health.Current, _health.Max);
         }
     }
 }

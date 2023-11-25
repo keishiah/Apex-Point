@@ -8,7 +8,7 @@ namespace CodeBase.Services.GameOver
 {
     public class GameOver : IGameOver
     {
-        private IUIFactory _uiFactory;
+        private readonly IUIFactory _uiFactory;
         private readonly IGameStateMachine _gameStateMachine;
 
         public GameOver(IUIFactory uiFactory, IGameStateMachine gameStateMachine)

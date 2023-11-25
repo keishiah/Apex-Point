@@ -399,6 +399,7 @@
 "Assets/CodeBase/Services/StaticDataService/IStaticDataService.cs"
 "Assets/CodeBase/Services/StaticDataService/StaticDataService.cs"
 "Assets/CodeBase/Static Data/EnemyStaticData.cs"
+"Assets/CodeBase/Static Data/PlaneSize.cs"
 "Assets/CodeBase/Static Data/WeaponStaticData.cs"
 "Assets/CodeBase/UI/Factories/IUIFactory.cs"
 "Assets/CodeBase/UI/Factories/UIFactory.cs"

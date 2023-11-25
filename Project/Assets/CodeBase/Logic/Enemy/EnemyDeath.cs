@@ -21,11 +21,6 @@ namespace CodeBase.Logic.Enemy
             _health.HealthChanged += OnHealthChanged;
         }
 
-        private void OnDestroy()
-        {
-            _health.HealthChanged -= OnHealthChanged;
-        }
-
         private void OnHealthChanged()
         {
             if (_health.Current <= 0)
@@ -38,6 +33,11 @@ namespace CodeBase.Logic.Enemy
         {
             _enemySpawner.OnEnemyDestroyed();
             Destroy(gameObject);
+        }
+
+        private void OnDestroy()
+        {
+            _health.HealthChanged -= OnHealthChanged;
         }
     }
 }
