@@ -5,6 +5,7 @@ namespace CodeBase.Logic.Tank
     public class TankMove : MonoBehaviour
     {
         public float speed = 2.0f;
+        public float rotateSpeed=100f;
 
         private CharacterController _characterController;
         private float _horizontalInput;
@@ -33,12 +34,12 @@ namespace CodeBase.Logic.Tank
         {
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             {
-                transform.Rotate(Vector3.up, 100 * Time.deltaTime);
+                transform.Rotate(Vector3.up, rotateSpeed * Time.deltaTime);
             }
 
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             {
-                transform.Rotate(Vector3.up, -100 * Time.deltaTime);
+                transform.Rotate(Vector3.up, -rotateSpeed * Time.deltaTime);
             }
         }
     }

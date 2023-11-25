@@ -22,11 +22,10 @@ namespace CodeBase.Logic.Enemy
 
         private void TriggerEnter(Collider obj)
         {
-            if (obj.CompareTag("Player"))
-            {
-                obj.GetComponent<IHealth>().TakeDamage(_damage);
-                _enemyDeath.Die();
-            }
+            if (!obj.CompareTag("Player")) 
+                return;
+            obj.GetComponent<IHealth>().TakeDamage(_damage);
+            _enemyDeath.Die();
         }
 
         private void OnDestroy()

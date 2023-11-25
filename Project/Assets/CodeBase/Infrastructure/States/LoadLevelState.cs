@@ -1,6 +1,6 @@
 ﻿using CodeBase.Infrastructure.Factories;
-using CodeBase.Services;
 using CodeBase.Services.EnemySpawner;
+using CodeBase.UI.Factories;
 using UnityEngine;
 using Zenject;
 
@@ -11,13 +11,15 @@ namespace CodeBase.Infrastructure.States
         private readonly ISceneLoader _sceneLoader;
         private readonly IGameFactory _gameFactory;
         private readonly IEnemySpawner _enemySpawner;
+        private readonly IUIFactory _uiFactory;
 
         public LoadLevelState(ISceneLoader sceneLoader, IGameFactory gameFactory,
-            IEnemySpawner enemySpawner)
+            IEnemySpawner enemySpawner, IUIFactory uiFactory)
         {
             _sceneLoader = sceneLoader;
             _gameFactory = gameFactory;
             _enemySpawner = enemySpawner;
+            _uiFactory = uiFactory;
         }
 
         public void Enter(string sceneName)
@@ -40,6 +42,7 @@ namespace CodeBase.Infrastructure.States
             _gameFactory.CreateTank(Vector3.zero);
             _gameFactory.CreateBulletPool();
             _enemySpawner.StartEnemySpawn();
+            _uiFactory.CreateUiRoot();
         }
 
         public class Factory : PlaceholderFactory<LoadLevelState>

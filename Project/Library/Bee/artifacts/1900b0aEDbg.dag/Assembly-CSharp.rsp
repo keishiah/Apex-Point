@@ -379,6 +379,7 @@
 "Assets/CodeBase/Logic/IArmor.cs"
 "Assets/CodeBase/Logic/IHealth.cs"
 "Assets/CodeBase/Logic/Tank/MovementController.cs"
+"Assets/CodeBase/Logic/Tank/TankDeath.cs"
 "Assets/CodeBase/Logic/Tank/TankHealth.cs"
 "Assets/CodeBase/Logic/Tank/TankMove.cs"
 "Assets/CodeBase/Logic/Tank/TankShoot.cs"
@@ -392,6 +393,8 @@
 "Assets/CodeBase/Logic/Weapon/WeaponTypes/WeaponTwo.cs"
 "Assets/CodeBase/Services/EnemySpawner/EnemySpawner.cs"
 "Assets/CodeBase/Services/EnemySpawner/IEnemySpawner.cs"
+"Assets/CodeBase/Services/GameOver/GameOver.cs"
+"Assets/CodeBase/Services/GameOver/IGameOver.cs"
 "Assets/CodeBase/Services/Pooler.cs"
 "Assets/CodeBase/Services/StaticDataService/IStaticDataService.cs"
 "Assets/CodeBase/Services/StaticDataService/StaticDataService.cs"
@@ -400,6 +403,7 @@
 "Assets/CodeBase/UI/Factories/IUIFactory.cs"
 "Assets/CodeBase/UI/Factories/UIFactory.cs"
 "Assets/CodeBase/UI/HpBar.cs"
+"Assets/CodeBase/UI/RestartButton.cs"
 -langversion:9.0
 
 /deterministic

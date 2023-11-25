@@ -3,6 +3,7 @@ using CodeBase.Infrastructure.Factories;
 using CodeBase.Infrastructure.States;
 using CodeBase.Services;
 using CodeBase.Services.EnemySpawner;
+using CodeBase.Services.GameOver;
 using CodeBase.Services.StaticDataService;
 using CodeBase.UI.Factories;
 using Zenject;
@@ -28,6 +29,13 @@ namespace CodeBase.CompositionRoot
             BindUIFactory();
 
             BindEnemySpawner();
+
+            BindGameOverService();
+        }
+
+        private void BindGameOverService()
+        {
+            Container.Bind<IGameOver>().To<GameOver>().AsSingle();
         }
 
         private void BindEnemySpawner()
@@ -42,7 +50,7 @@ namespace CodeBase.CompositionRoot
         {
             Container
                 .BindFactory<GameBootstrapper, GameBootstrapper.Factory>()
-                .FromComponentInNewPrefabResource(InfrastructureAssetPath.GameBootstraper);
+                .FromComponentInNewPrefabResource(InfrastructureAssetPath.GameBootsTrapper);
         }
 
         private void BindGameFactory()
