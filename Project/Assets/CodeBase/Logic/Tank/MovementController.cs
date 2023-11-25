@@ -6,8 +6,8 @@ namespace CodeBase.Logic.Tank
     {
         private const float MinX = -37;
         private const float MaxX = 37;
-        private const float MinY = -24f;
-        private const float MaxY = 24f;
+        private const float MinY = -20f;
+        private const float MaxY = 20f;
 
         void Update()
         {

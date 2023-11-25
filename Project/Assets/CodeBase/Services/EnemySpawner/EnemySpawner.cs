@@ -19,7 +19,7 @@ namespace CodeBase.Services.EnemySpawner
         private int _maxEnemyCount = 10;
 
         private float _planeWidth = 76;
-        private float _planeLength = 52;
+        private float _planeLength = 40;
         private readonly WaitForSeconds _waitTime = new(2f);
 
         public EnemySpawner(IGameFactory gameFactory, ICoroutineRunner coroutineRunner)
